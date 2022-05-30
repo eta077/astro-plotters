@@ -24,7 +24,8 @@ fn main() {
     }
     let data_diff = data_max - data_min;
 
-    let root_drawing_area = BitMapBackend::new("output/astro-rs.png", (1920, 1080)).into_drawing_area();
+    let root_drawing_area =
+        BitMapBackend::new("output/astro-rs.png", (1920, 1080)).into_drawing_area();
     root_drawing_area.fill(&BLACK).unwrap();
 
     let mut chart = ChartBuilder::on(&root_drawing_area)
@@ -60,6 +61,7 @@ fn main() {
 
 #[cfg(not(any(feature = "astro-rs", feature = "fitsio")))]
 fn main() {
-    let root_drawing_area = BitMapBackend::new("output/default.png", (1920, 1080)).into_drawing_area();
+    let root_drawing_area =
+        BitMapBackend::new("output/default.png", (1920, 1080)).into_drawing_area();
     root_drawing_area.fill(&BLACK).unwrap();
 }
