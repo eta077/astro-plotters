@@ -1,0 +1,11 @@
+[package]
+name = "astro-plotter"
+version = "0.0.1"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+plotters = { version = "*", default_features = false, features = ["bitmap_backend", "bitmap_encoder", "point_series"] }
+astro-rs = { version = "*", git = "https://github.com/eta077/astro-rs", branch = "image-feature", optional = true }
+fitsio = { version = "*", optional = true }
