@@ -41,10 +41,10 @@ fn main() {
             1u32,
             &WHITE,
             &|c, s, _st| {
-                let data_value = (data[c.0 * dim_x + c.1] / data_diff * 255.0) as u8;
-                let color = RGBColor(data_value, data_value, data_value);
-                return EmptyElement::at(c)    // We want to construct a composed element on-the-fly
-                + Circle::new((0,0),s,color.filled());
+                let data_value = data[dim_x * (dim_x - 1 - c.1) + c.0];
+                let color_value = (data_value / data_diff * 255.0) as u8;
+                let color = RGBColor(color_value, color_value, color_value);
+                return EmptyElement::at(c) + Circle::new((0, 0), s, color.filled());
             },
         ))
         .unwrap();
@@ -98,10 +98,10 @@ fn main() {
             1u32,
             &WHITE,
             &|c, s, _st| {
-                let data_value = (data[c.0 * dim_x + c.1] / data_diff * 255.0) as u8;
-                let color = RGBColor(data_value, data_value, data_value);
-                return EmptyElement::at(c)    // We want to construct a composed element on-the-fly
-                + Circle::new((0,0),s,color.filled());
+                let data_value = data[dim_x * (dim_x - 1 - c.1) + c.0];
+                let color_value = (data_value / data_diff * 255.0) as u8;
+                let color = RGBColor(color_value, color_value, color_value);
+                return EmptyElement::at(c) + Circle::new((0, 0), s, color.filled());
             },
         ))
         .unwrap();
