@@ -109,6 +109,7 @@ fn main() {
 
 #[cfg(feature = "fitsio")]
 fn main() {
+    // requires pkg-config, not available on default windows
     use fitsio::FitsFile;
 
     let hdu_list = FitsFile::open("assets/eagle_nebula/502nmos.fits").unwrap();
@@ -121,6 +122,7 @@ fn main() {
 
 #[cfg(feature = "fits-rs")]
 fn main() {
+    // parser::fits panics on given input
     use fits_rs::parser;
     use std::fs::File;
     use std::io::{BufReader, Read};
@@ -135,6 +137,7 @@ fn main() {
 
 #[cfg(feature = "rubbl_fits")]
 fn main() {
+    // can't get data from FitsParser? not sure I want to go through all the byte parsing required by decoder...
     use rubbl_fits::FitsParser;
     use std::fs::File;
     use std::io::BufReader;
@@ -143,10 +146,15 @@ fn main() {
     let fits_file_reader = BufReader::new(fits_file);
     let hdu_list = FitsParser::new(fits_file_reader).unwrap();
     let primary_hdu = &hdu_list.hdus()[0];
+
+    let (_, _, naxis) = primary_hdu.shape();
+    let dim_x = naxis[0];
+    let dim_y = naxis[1];
 }
 
 #[cfg(feature = "rustronomy-fits")]
 fn main() {
+    // Fits::open panics on given input
     use rustronomy_fits::Fits;
     use std::path::Path;
 
