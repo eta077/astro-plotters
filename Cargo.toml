@@ -8,4 +8,8 @@ edition = "2021"
 [dependencies]
 plotters = { version = "*", default_features = false, features = ["bitmap_backend", "bitmap_encoder", "point_series"] }
 astro-rs = { version = "*", git = "https://github.com/eta077/astro-rs", branch = "image-feature", optional = true }
+fitrs = { version = "*", optional = true }
 fitsio = { version = "*", optional = true }
+fits-rs = { version = "*", optional = true }
+rubbl_fits = { version = "*", optional = true }
+rustronomy-fits = { version = "*", optional = true }
